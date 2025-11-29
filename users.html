@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Management - ThiranFlow</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <header>
+        <div class="container navbar">
+            <div class="logo-container">
+                <img src="thiranex-logo.png" alt="Thiranex Logo" class="logo-img">
+                <span class="logo-text">ThiranFlow</span>
+            </div>
+            <div class="nav-links">
+                <a href="admin.html" class="nav-btn">Dashboard</a>
+                <span id="adminName" style="font-weight: 600;">Admin</span>
+                <button onclick="logout()" class="nav-btn">Logout</button>
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="flex justify-between align-center mb-2">
+            <h2>User Management</h2>
+            <button class="btn" onclick="showModal('userModal')">+ Add New User</button>
+        </div>
+
+        <!-- User Management Section -->
+        <div class="card">
+            <div class="table-responsive">
+                <table id="userTable">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Role</th>
+                            <th>Status</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Users will be loaded here -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add User Modal -->
+    <div id="userModal" class="modal hidden"
+        style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); display: flex; align-items: center; justify-content: center; z-index: 1000;">
+        <div class="card" style="width: 100%; max-width: 500px; margin: 0;">
+            <h3>Add New Employee</h3>
+            <form id="addUserForm">
+                <div class="form-group">
+                    <label>Employee ID</label>
+                    <input type="text" name="employeeId" required>
+                </div>
+                <div class="form-group">
+                    <label>Full Name</label>
+                    <input type="text" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label>Email</label>
+                    <input type="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label>Mobile</label>
+                    <input type="text" name="mobile" required>
+                </div>
+                <div class="form-group">
+                    <label>Role</label>
+                    <input type="text" name="role" placeholder="e.g. Employee, Intern, Manager" value="Employee"
+                        required>
+                </div>
+                <div class="form-group">
+                    <label>Password</label>
+                    <input type="password" name="password" required>
+                </div>
+                <div class="flex justify-between">
+                    <button type="button" class="btn btn-secondary" onclick="hideModal('userModal')">Cancel</button>
+                    <button type="submit" class="btn">Add User</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Edit User Modal -->
+    <div id="editUserModal" class="modal hidden"
+        style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); display: flex; align-items: center; justify-content: center; z-index: 1000;">
+        <div class="card" style="width: 100%; max-width: 500px; margin: 0;">
+            <h3>Edit Employee Details</h3>
+            <form id="editUserForm">
+                <div class="form-group">
+                    <label>Employee ID</label>
+                    <input type="text" name="employeeId" id="editEmployeeId" readonly style="background-color: #eee;">
+                </div>
+                <div class="form-group">
+                    <label>Full Name</label>
+                    <input type="text" name="name" id="editName" required>
+                </div>
+                <div class="form-group">
+                    <label>Email</label>
+                    <input type="email" name="email" id="editEmail" required>
+                </div>
+                <div class="form-group">
+                    <label>Mobile</label>
+                    <input type="text" name="mobile" id="editMobile" required>
+                </div>
+                <div class="form-group">
+                    <label>Password</label>
+                    <input type="text" name="password" id="editPassword" required
+                        placeholder="Enter new password to update">
+                </div>
+                <div class="flex justify-between">
+                    <button type="button" class="btn btn-secondary" onclick="hideModal('editUserModal')">Cancel</button>
+                    <button type="submit" class="btn">Update User</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script src="users.js"></script>
+</body>
+
+</html>
